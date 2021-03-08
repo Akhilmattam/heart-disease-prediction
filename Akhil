@@ -1,0 +1,44 @@
+#IMPORT PYTHON LIBRARIES
+
+import sys
+import path
+import pandas as pd
+import numpy as np
+from scipy.special import logsumexp
+from fancyimpute import IterativeImputer
+from fancyimpute import KNN 
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+#FUNCTION #1 check the status of the dataset file
+
+def is_fileExists(filename):
+    if path.isfile(filename):
+        return True
+    else:
+        return False
+    
+#FUNCTION #2 Read the file
+
+def read_csv(filename):
+    try:
+        if (is_fileExists):
+            fileHandler=pd.read_csv(filename)
+            return fileHandler
+    except Exception as err:
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        sys.stderr.write("ERRORED DESC\t::%s:\n"% str(err))
+        sys.stderr.write("ERRORED MODULE\t::%s:\n"%str(exc_type))
+        sys.stderr.write("ERRORED LINE\t::%s:\n"%str(exc_tb.tb_lineno))
+        
+       
+FUNCTION #3 Get column Names
+
+def get_columnNames(filePd):
+    try:
+        return (filePd.columns.tolist())
+    except Exception as err:
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        sys.stderr.write("ERRORED DESC\t::%s:\n"% str(err))
+        sys.stderr.write("ERRORED MODULE\t::%s:\n"%str(exc_type))
+        sys.stderr.write("ERRORED LINE\t::%s:\n"%str(exc_tb.tb_lineno))
